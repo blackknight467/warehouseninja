@@ -38,6 +38,13 @@ class OrderProduct extends CreatedUpdatedEntity
     private $product;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="product_amount", type="integer")
+     */
+    private $productAmount;
+
+    /**
      * @var Warehouse
      *
      * @ORM\ManyToOne(targetEntity="WarehouseNinja\ShipBundle\Entity\Warehouse")
@@ -100,6 +107,29 @@ class OrderProduct extends CreatedUpdatedEntity
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set productAmount
+     *
+     * @param $amount
+     * @return OrderProduct
+     */
+    public function setProductAmount($amount)
+    {
+        $this->productAmount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get productAmount
+     *
+     * @return int
+     */
+    public function getProductAmount()
+    {
+        return $this->productAmount;
     }
 
     /**
