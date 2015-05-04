@@ -1,0 +1,4 @@
+services:
+#    warehouse_ninja_ship.example:
+#        class: WarehouseNinja\ShipBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

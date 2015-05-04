@@ -1,3 +1,7 @@
+warehouse_ninja_ship:
+    resource: "@WarehouseNinjaShipBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

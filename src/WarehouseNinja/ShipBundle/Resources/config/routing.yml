@@ -1,0 +1,3 @@
+warehouse_ninja_ship_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: WarehouseNinjaShipBundle:Default:index }
