@@ -34,11 +34,11 @@ class AddWarehouseCommand extends ContainerAwareCommand
         $warehouse = new Warehouse();
         $helper = $this->getHelper('question');
 
-        $question = new Question('What shall the name of the warehouse be?', 'Warehouse 13');
+        $question = new Question('What shall the name of the warehouse be? ', 'Warehouse 13');
         $name = $helper->ask($input, $output, $question);
         $warehouse->setName($name);
 
-        $question = new Question('What is the address of the warehouse?', '500 East Capitol Avenue, Pierre, SD 57501');
+        $question = new Question('What is the address of the warehouse? ', '500 East Capitol Avenue, Pierre, SD 57501');
         $address = $helper->ask($input, $output, $question);
         $warehouse->setAddress($address);
 

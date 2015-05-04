@@ -31,23 +31,23 @@ class AddProductCommand extends ContainerAwareCommand
         $product = new Product();
         $helper = $this->getHelper('question');
 
-        $question = new Question('What shall the name of the product be?', 'Adipose');
+        $question = new Question('What shall the name of the product be? ', 'Adipose');
         $name = $helper->ask($input, $output, $question);
         $product->setName($name);
 
-        $question = new Question('What is the height of the product? (in inches)', '1');
+        $question = new Question('What is the height of the product? (in inches) ', '1');
         $height = $helper->ask($input, $output, $question);
         $product->setHeight($height);
 
-        $question = new Question('What is the width of the product? (in inches)', '1');
+        $question = new Question('What is the width of the product? (in inches) ', '1');
         $width = $helper->ask($input, $output, $question);
         $product->setWidth($width);
 
-        $question = new Question('What is the length of the product? (in inches)', '1');
+        $question = new Question('What is the length of the product? (in inches) ', '1');
         $length = $helper->ask($input, $output, $question);
         $product->setLength($length);
 
-        $question = new Question('What is the weight of the product? (in ounces)', '1');
+        $question = new Question('What is the weight of the product? (in ounces) ', '1');
         $weight = $helper->ask($input, $output, $question);
         $product->setWeight($weight);
 

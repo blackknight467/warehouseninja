@@ -31,7 +31,7 @@ class AddStockCommand extends ContainerAwareCommand
         $stock = new Stock();
         $shipService = $this->getContainer()->get('warehouse_ninja_ship.ship');
         $helper = $this->getHelper('question');
-        $question = new Question('What warehouse are we stocking?', 'Warehouse 13');
+        $question = new Question('What warehouse are we stocking? ', 'Warehouse 13');
         $warehouseName = $helper->ask($input, $output, $question);
         $warehouse = $shipService->getWarehouseById($warehouseName);
         if ($warehouse == null) {
@@ -42,7 +42,7 @@ class AddStockCommand extends ContainerAwareCommand
             return;
         }
 
-        $question = new Question('What product are we stocking?', 'Adipose');
+        $question = new Question('What product are we stocking? ', 'Adipose');
         $productName = $helper->ask($input, $output, $question);
         $product = $shipService->getProductById($productName);
         if ($product == null) {
@@ -53,7 +53,7 @@ class AddStockCommand extends ContainerAwareCommand
             return;
         }
 
-        $question = new Question('How much are we stocking?', '10');
+        $question = new Question('How much are we stocking? ', '10');
         $question->setValidator(function ($answer) {
             if (!is_numeric($answer)) {
                 throw new \RuntimeException(
