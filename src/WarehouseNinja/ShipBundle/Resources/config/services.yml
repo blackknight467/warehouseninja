@@ -1,3 +1,7 @@
 services:
     warehouse_ninja_ship.geolocation:
         class: WarehouseNinja\ShipBundle\Service\GeoLocationService
+
+    warehouse_ninja_ship.ship:
+        class: WarehouseNinja\ShipBundle\Service\ShipService
+        arguments: [@service_container, @doctrine.orm.entity_manager]
