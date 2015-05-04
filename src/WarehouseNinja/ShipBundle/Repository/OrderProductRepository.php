@@ -3,6 +3,9 @@
 namespace WarehouseNinja\ShipBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use WarehouseNinja\ShipBundle\Entity\OrderProduct;
+use WarehouseNinja\ShipBundle\Entity\Product;
+use WarehouseNinja\ShipBundle\Entity\Warehouse;
 
 /**
  * OrderProductRepository
@@ -12,4 +15,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class OrderProductRepository extends EntityRepository
 {
+    /**
+     * @param Warehouse $warehouse
+     * @param Product $product
+     * @return OrderProduct[]
+     */
+    public function getByWarehouseProduct(Warehouse $warehouse, Product $product)
+    {
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+
+        $queryBuilder->select(array('o'))
+            ->from('WarehouseNinjaShipBundle:OrderProduct', 'o')
+            ->where('o.warehouse = :warehouse')
+            ->setParameter('warehouse',$warehouse)
+            ->andWhere('o.product = :product')
+            ->setParameter('product', $product);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

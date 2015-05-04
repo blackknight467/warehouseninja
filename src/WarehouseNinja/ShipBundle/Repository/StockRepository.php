@@ -3,6 +3,9 @@
 namespace WarehouseNinja\ShipBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use WarehouseNinja\ShipBundle\Entity\Product;
+use WarehouseNinja\ShipBundle\Entity\Stock;
+use WarehouseNinja\ShipBundle\Entity\Warehouse;
 
 /**
  * StockRepository
@@ -12,4 +15,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class StockRepository extends EntityRepository
 {
+    /**
+     * @param Warehouse $warehouse
+     * @param Product $product
+     * @return Stock[]
+     */
+    public function getByWarehouseProduct(Warehouse $warehouse, Product $product)
+    {
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+
+        $queryBuilder->select(array('s'))
+            ->from('WarehouseNinjaShipBundle:Stock', 's')
+            ->where('s.warehouse = :warehouse')
+            ->setParameter('warehouse',$warehouse)
+            ->andWhere('s.product = :product')
+            ->setParameter('product', $product);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
