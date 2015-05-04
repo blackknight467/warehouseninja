@@ -18,8 +18,6 @@ class AddWarehouseCommand extends ContainerAwareCommand
         $this
             ->setName('ship:warehouse:add')
             ->setDescription('add a warehouse to the system')
-//            ->addArgument('name', InputArgument::REQUIRED, 'name of the warehouse')
-//            ->addOption('address', null, InputOption::VALUE_REQUIRED, 'the address of the warehouse')
         ;
     }
 
